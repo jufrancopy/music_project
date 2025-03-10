@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armonías de Torre Fuerte | Proyecto Musical - Colegio Torre Fuerte</title>
+    <style>
+        :root {
+            --primary-color: #1a4b8c;
+            --secondary-color: #c9a83f;
+            --light-color: #f5f5f5;
+            --dark-color: #333333;
+            --font-main: 'Montserrat', sans-serif;
+            --font-secondary: 'Lora', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(26, 75, 140, 0.8), rgba(26, 75, 140, 0.8)), url('/api/placeholder/1200/400') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-family: var(--font-secondary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-secondary);
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-alt {
+            background-color: var(--light-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            height: 200px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            left: 0;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent transparent white;
+            top: 15px;
+            right: -20px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            border-color: transparent white transparent transparent;
+            left: -20px;
+            right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .benefit-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-info {
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Estilos para los modales */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                left: 0 !important;
+            }
+
+            .timeline-item::after {
+                left: 20px !important;
+            }
+
+            .timeline-content::after {
+                border-color: transparent transparent transparent white !important;
+                left: auto !important;
+                right: -20px !important;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Colegio Torre Fuerte | San Lorenzo, Paraguay</h1>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Armonías de Torre Fuerte</h1>
+            <p>Proyecto Modular Extracurricular de Educación Musical</p>
+            <a href="#inscripcion" class="btn btn-secondary">Inscripciones abiertas</a>
+        </div>
+    </section>
+
+    <section id="fundamentos">
+        <div class="container">
+            <h2>Fundamentación</h2>
+            <div class="grid">
+                <div>
+                    <p>El proyecto "Armonías de Torre Fuerte" nace del espíritu educativo impulsado por San Josemaría
+                        Escrivá de Balaguer, quien promovió la educación integral y la formación en valores. Esta
+                        iniciativa de educación musical se alinea perfectamente con la visión del Colegio Torre Fuerte
+                        de San Lorenzo.</p>
+                    <p>La música, como expresión artística universal, constituye un pilar fundamental en la formación
+                        integral de la persona. A través de ella, los estudiantes pueden desarrollar no solo habilidades
+                        técnicas específicas, sino también capacidades cognitivas, emocionales y sociales.</p>
+                </div>
+                <div>
+                    <img src="https://picsum.photos/seed/picsum/200/100" alt="Filosofía educativa"
+                        style="width: 100%; border-radius: 8px;">
+                </div>
+            </div>
+            <div class="center" style="margin-top: 40px;">
+                <a href="#estructura" class="btn">Descubrir el programa</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="objetivos" class="section-alt">
+        <div class="container">
+            <h2>Objetivos</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-img" style="background-color: #1a4b8c;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Formación Integral</h3>
+                        <p>Implementar un programa modular extracurricular de educación musical que desarrolle las
+                            habilidades artísticas y musicales de los estudiantes del Colegio Torre Fuerte.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #2a5b9c;">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Desarrollo Técnico</h3>
+                        <p>Ofrecer una formación musical estructurada y progresiva que comprenda aspectos teóricos y
+                            prácticos, desarrollando habilidades instrumentales y vocales.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #3a6bac;">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Identidad Cultural</h3>
+                        <p>Promover el conocimiento y valoración del patrimonio musical paraguayo y universal,
+                            fortaleciendo el sentido de pertenencia cultural.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="estructura">
+        <div class="container">
+            <h2>Estructura Modular</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Módulo de Formación Teórica</h3>
+                        <ul>
+                            <li>Teoría Musical Básica</li>
+                            <li>Teoría y Solfeo</li>
+                            <li>Historia de la Música Universal</li>
+                            <li>Historia del Arte</li>
+                            <li>Historia de la Música Paraguaya</li>
+                            <li>Ritmos y Formas de la Música Paraguaya</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Módulo de Formación Práctica</h3>
+                        <ul>
+                            <li>Práctica Instrumental (cuerdas, vientos, percusión, piano)</li>
+                            <li>Práctica Coral</li>
+                            <li>Ensambles instrumentales</li>
+                            <li>Técnica vocal</li>
+                            <li>Interpretación</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Módulo de Integración Artística</h3>
+                        <ul>
+                            <li>Teatro Musical</li>
+                            <li>Proyectos Interdisciplinarios</li>
+                            <li>Producción Musical</li>
+                            <li>Creación y composición</li>
+                            <li>Experimentación sonora</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="etapas" class="section-alt">
+        <div class="container">
+            <h2>Etapas de Implementación</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Fase 1: Iniciación</h3>
+                        <p><strong>Primer Semestre</strong></p>
+                        <ul>
+                            <li>Inicio de clases los viernes de 13:00 a 17:00 horas</li>
+                            <li>Teoría Musical Básica</li>
+                            <li>Iniciación a la Práctica Instrumental</li>
+                            <li>Coro Infantil y Juvenil</li>
+                            <li>Ciclo de conciertos pedagógicos</li>
+                        </ul>
+                        <button class="btn" onclick="openModal('modal1')">Requerimientos</button>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Fase 2: Desarrollo</h3>
+                        <p><strong>Segundo Semestre</strong></p>
+                        <ul>
+                            <li>Ampliación a dos días semanales: viernes y martes</li>
+                            <li>Teoría y Solfeo</li>
+                            <li>Práctica Instrumental Intermedia</li>
+                            <li>Historia de la Música Paraguaya</li>
+                            <li>Ensambles Iniciales</li>
+                        </ul>
+                        <button class="btn" onclick="openModal('modal2')">Requerimientos</button>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Fase 3: Consolidación</h3>
+                        <p><strong>Segundo Año</strong></p>
+                        <ul>
+                            <li>Ampliación a tres días semanales</li>
+                            <li>Módulos avanzados</li>
+                            <li>Formación de la Orquesta de Cámara</li>
+                            <li>Formación de la Banda Lisa</li>
+                            <li>Proyectos interdisciplinarios</li>
+                        </ul>
+                        <button class="btn" onclick="openModal('modal3')">Requerimientos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agrupaciones">
+        <div class="container">
+            <h2>Agrupaciones Musicales</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://picsum.photos/400/250" alt="Orquesta de Cámara" style="width: 100%;">
+                    <div class="card-content">
+                        <h3 class="card-title">Orquesta de Cámara "José María Escrivá de Balaguer"</h3>
+                        <p>Ensamble instrumental de cuerdas, vientos y percusión que interpretará repertorio universal y
+                            paraguayo.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/400/250" alt="Banda Lisa" style="width: 100%;">
+                    <div class="card-content">
+                        <h3 class="card-title">Banda Lisa del Colegio Torre Fuerte</h3>
+                        <p>Agrupación de instrumentos de viento y percusión para eventos cívicos y formativos.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/400/250" alt="Coro Torre Fuerte" style="width: 100%;">
+                    <div class="card-content">
+                        <h3 class="card-title">Coro Torre Fuerte</h3>
+                        <p>Agrupación vocal con diferentes secciones por edades: Coro Infantil, Coro Juvenil y Coro de
+                            Jóvenes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="conciertos" class="section-alt">
+        <div class="container">
+            <h2>Ciclos de Conciertos Pedagógicos</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">"Descubriendo los Instrumentos"</h3>
+                        <p>Conciertos interactivos donde músicos profesionales muestran las características, historia y
+                            posibilidades técnicas de cada instrumento.</p>
+                        <p><strong>Frecuencia:</strong> Mensual durante el primer semestre</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">"La Música en la Historia"</h3>
+                        <p>Conciertos temáticos que relacionan la música con acontecimientos históricos y culturales
+                            relevantes.</p>
+                        <p><strong>Frecuencia:</strong> Bimestral durante el segundo semestre</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">"Nuestras Raíces Musicales"</h3>
+                        <p>Presentación de los principales géneros y compositores paraguayos, valorando el patrimonio
+                            musical nacional.</p>
+                        <p><strong>Frecuencia:</strong> Trimestral</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">"Música y Bienestar"</h3>
+                        <p>Talleres-concierto con especialistas en musicoterapia y neurociencia, mostrando los
+                            beneficios de la música para la salud.</p>
+                        <p><strong>Frecuencia:</strong> Semestral</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="beneficios">
+        <div class="container">
+            <h2>Beneficios para el Desarrollo Integral</h2>
+            <p class="center">Estudios científicos demuestran los múltiples beneficios de la educación musical</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="benefit-title">Beneficios Cognitivos</h3>
+                    <ul>
+                        <li>Mejora en la plasticidad cerebral</li>
+                        <li>Mayor capacidad de concentración y memoria</li>
+                        <li>Habilidad para resolver problemas complejos</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="benefit-title">Beneficios Emocionales</h3>
+                    <ul>
+                        <li>Capacidad para gestionar el estrés y la ansiedad</li>
+                        <li>Canal para expresar emociones</li>
+                        <li>Aumento de la autoestima</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Beneficios Sociales</h3>
+                    <ul>
+                        <li>Trabajo en equipo</li>
+                        <li>Desarrollo de habilidades comunicativas</li>
+                        <li>Responsabilidad y compromiso</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 class="benefit-title">Salud Mental (Adolescentes)</h3>
+                    <ul>
+                        <li>Reducción de síntomas depresivos en un 25%</li>
+                        <li>Manejo efectivo del estrés</li>
+                        <li>Factor protector contra conductas de riesgo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="center" style="margin-top: 50px;">
+                <img src="/api/placeholder/800/400" alt="Beneficios de la música"
+                    style="max-width: 100%; border-radius: 8px;">
+            </div>
+        </div>
+    </section>
+
+    <section id="costos" class="section-alt">
+        <div class="container">
+            <h2>Estructura de Costos</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modalidad</th>
+                        <th>Descripción</th>
+                        <th>Costo Mensual (Gs)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Básica</td>
+                        <td>1 módulo teórico + 1 práctico</td>
+                        <td>Precio definido por la institución</td>
+                    </tr>
+                    <tr>
+                        <td>Intermedia</td>
+                        <td>2 módulos teóricos + 1 práctico</td>
+                        <td>Precio definido por la institución</td>
+                    </tr>
+                    <tr>
+                        <td>Avanzada</td>
+                        <td>2 módulos teóricos + 2 prácticos</td>
+                        <td>Precio definido por la institución</td>
+                    </tr>
+                    <tr>
+                        <td>Integral</td>
+                        <td>Todos los módulos</td>
+                        <td>Precio definido por la institución</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="center" style="margin-top: 20px;"><strong>Nota:</strong> Se contemplarán becas parciales y totales
+                para estudiantes destacados con limitaciones económicas.</p>
+        </div>
+    </section>
+
+    <section id="author">
+        <div class="container">
+            <h2>Autor del Proyecto</h2>
+            <p>
+                Soy Licenciado en Filosofía y Profesor Elemental de Música con énfasis en Violoncello, comprometido con
+                la
+                formación
+                integral a través del arte y el pensamiento crítico. Actualmente, desempeño funciones docentes en el
+                Instituto Superior Nacional de Música, donde imparto la Cátedra de Historia del Música paraguaya,
+                Introducción a la Filosofía y el
+                curso de
+                Violoncello Introductorio.
+            </p>
+            <p>
+                Como multinstrumentista y fundador de la <a href="https://ipuparaguay.org">Orquesta Filarmónica Ipu
+                    Paraguay</a>, he cultivado una amplia
+                trayectoria en el ámbito musical, actuando también como arreglador, orquestador y compositor. Entre mis
+                experiencias destacadas se encuentra la dirección de la orquesta en obras emblemáticas, como la zarzuela
+                paraguaya <em>María Pacuri</em>, y la coordinación de proyectos musicales en el Teatro Municipal Ignacio
+                A.
+                Pane.
+            </p>
+            <p>
+                Además de mi pasión por la música, he incursionado en el campo tecnológico, desarrollando competencias
+                en
+                lenguajes de programación como PHP y Python, y trabajando en el desarrollo de software. Esta combinación
+                de
+                habilidades artísticas y tecnológicas me permite abordar los desafíos desde una perspectiva
+                multidisciplinaria, promoviendo siempre la innovación y la excelencia.
+            </p>
+        </div>
+    </section>
+
+    <section id="inscripcion">
+        <div class="container">
+            <h2>Inscripciones</h2>
+            <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                <div>
+                    <h3 style="margin-bottom: 20px;">Proceso de Inscripción</h3>
+                    <ol>
+                        <li>Completar el formulario de pre-inscripción</li>
+                        <li>Asistir a la entrevista de orientación</li>
+                        <li>Realizar prueba de aptitudes musicales (no eliminatoria)</li>
+                        <li>Confirmación de módulos y horarios</li>
+                        <li>Formalización de inscripción</li>
+                    </ol>
+
+                    <h3 style="margin: 30px 0 20px;">Calendario</h3>
+                    <ul>
+                        <li><strong>Pre-inscripciones:</strong> A partir del 15 de marzo</li>
+                        <li><strong>Entrevistas:</strong> Del 20 al 31 de marzo</li>
+                        <li><strong>Inicio de clases:</strong> Viernes 7 de abril</li>
+                    </ul>
+
+                    <div style="margin-top: 30px;">
+                        <a href="#" class="btn">Formulario de Inscripción</a>
+                    </div>
+                </div>
+                <div>
+                    <div
+                        style="background-color: var(--primary-color); padding: 30px; border-radius: 8px; color: white;">
+                        <h3 style="color: white; margin-bottom: 20px;">Proyectista</h3>
+                        <p><i class="fas fa-user"></i> Prof. Lic. Julio Franco</p>
+                        <a href="https://wa.me/595981574711" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i> 0981-574711
+                        </a>
+                        <p><i class="fas fa-envelope"></i> jucfra23@gmail.comy</p>
+
+                        <h4 style="color: white; margin: 20px 0;">Horario de Atención</h4>
+                        <p>Lunes a Viernes: 07:00 - 16:00</p>
+                        <p>Sábados: 08:00 - 12:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <h3>Colegio Torre Fuerte</h3>
+                <p>San Lorenzo, Paraguay</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#fundamentos">Fundamentos</a>
+                <a href="#estructura">Estructura</a>
+                <a href="#agrupaciones">Agrupaciones</a>
+                <a href="#beneficios">Beneficios</a>
+                <a href="#inscripcion">Inscripciones</a>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Colegio Torre Fuerte. Todos los derechos reservados.</p>
+                <p>Proyecto "Armonías de Torre Fuerte"</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Programa de la Fase 1: Iniciación</h2>
+            <ul>
+                <li>Inicio de clases los viernes de 13:00 a 17:00 horas</li>
+                <li>Teoría Musical Básica</li>
+                <li>Iniciación a la Práctica Instrumental</li>
+                <li>Coro Infantil y Juvenil</li>
+                <li>Ciclo de conciertos pedagógicos</li>
+            </ul>
+            <h3>Requerimientos para la Fase 1</h3>
+            <ul>
+                <li><strong>Recursos Humanos:</strong>
+                    <ul>
+                        <li>1 Profesor de Teoría Musical (4 horas semanales)</li>
+                        <li>1 Instructor de Instrumentos (4 horas semanales)</li>
+                        <li>1 Director Coral (4 horas semanales)</li>
+                    </ul>
+                </li>
+                <li><strong>Recursos Materiales:</strong>
+                    <ul>
+                        <li>Instrumentos musicales básicos (guitarras, flautas, teclados)</li>
+                        <li>Partituras y material didáctico para teoría musical</li>
+                        <li>Atriles y soportes para instrumentos</li>
+                        <li>Equipo de sonido básico (micrófonos, amplificador)</li>
+                    </ul>
+                </li>
+                <li><strong>Espacios Físicos:</strong>
+                    <ul>
+                        <li>Aula equipada para clases teóricas (pizarra, proyector)</li>
+                        <li>Sala de ensayo para prácticas instrumentales y coro</li>
+                        <li>Espacio para conciertos pedagógicos (auditorio o salón multiusos)</li>
+                    </ul>
+                </li>
+                <li><strong>Presupuesto Estimado:</strong>
+                    <ul>
+                        <li>Honorarios docentes: $1,500 USD/mes</li>
+                        <li>Adquisición de instrumentos: $3,000 USD (inicial)</li>
+                        <li>Material didáctico: $500 USD</li>
+                        <li>Mantenimiento de espacios: $200 USD/mes</li>
+                    </ul>
+                </li>
+                <li><strong>Logística:</strong>
+                    <ul>
+                        <li>Horarios coordinados con el calendario escolar</li>
+                        <li>Comunicación constante con padres de familia</li>
+                        <li>Evaluación inicial de habilidades musicales de los estudiantes</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Programa de la Fase 2: Desarrollo</h2>
+            <ul>
+                <li>Ampliación a dos días semanales: viernes y martes</li>
+                <li>Teoría y Solfeo</li>
+                <li>Práctica Instrumental Intermedia</li>
+                <li>Historia de la Música Paraguaya</li>
+                <li>Ensambles Iniciales</li>
+            </ul>
+            <h3>Requerimientos para la Fase 2</h3>
+            <ul>
+                <li><strong>Recursos Humanos:</strong>
+                    <ul>
+                        <li>1 Profesor de Teoría y Solfeo (6 horas semanales)</li>
+                        <li>1 Instructor de Instrumentos Intermedios (6 horas semanales)</li>
+                        <li>1 Profesor de Historia de la Música Paraguaya (4 horas semanales)</li>
+                        <li>1 Director de Ensambles (6 horas semanales)</li>
+                    </ul>
+                </li>
+                <li><strong>Recursos Materiales:</strong>
+                    <ul>
+                        <li>Instrumentos adicionales para nivel intermedio (violines, trompetas, percusión)</li>
+                        <li>Partituras y material didáctico para solfeo y ensambles</li>
+                        <li>Equipo de sonido mejorado (micrófonos inalámbricos, mezcladora)</li>
+                        <li>Material audiovisual para clases de historia de la música</li>
+                    </ul>
+                </li>
+                <li><strong>Espacios Físicos:</strong>
+                    <ul>
+                        <li>Aula equipada para teoría y solfeo (pizarra, proyector, equipo de audio)</li>
+                        <li>Sala de ensayo ampliada para prácticas instrumentales y ensambles</li>
+                        <li>Espacio para presentaciones de ensambles (auditorio o salón multiusos)</li>
+                    </ul>
+                </li>
+                <li><strong>Presupuesto Estimado:</strong>
+                    <ul>
+                        <li>Honorarios docentes: $2,500 USD/mes</li>
+                        <li>Adquisición de instrumentos adicionales: $5,000 USD</li>
+                        <li>Material didáctico y audiovisual: $1,000 USD</li>
+                        <li>Mantenimiento de espacios y equipo: $300 USD/mes</li>
+                    </ul>
+                </li>
+                <li><strong>Logística:</strong>
+                    <ul>
+                        <li>Coordinación de horarios con el calendario escolar y actividades extracurriculares</li>
+                        <li>Evaluación continua del progreso de los estudiantes</li>
+                        <li>Organización de presentaciones públicas de ensambles</li>
+                        <li>Comunicación constante con padres de familia para seguimiento</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Programa de la Fase 3: Consolidación</h2>
+            <ul>
+                <li>Ampliación a tres días semanales</li>
+                <li>Módulos avanzados</li>
+                <li>Formación de la Orquesta de Cámara</li>
+                <li>Formación de la Banda Lisa</li>
+                <li>Proyectos interdisciplinarios</li>
+            </ul>
+            <h3>Requerimientos para la Fase 3</h3>
+            <ul>
+                <li><strong>Recursos Humanos:</strong>
+                    <ul>
+                        <li>1 Director de Orquesta de Cámara (8 horas semanales)</li>
+                        <li>1 Director de Banda Lisa (8 horas semanales)</li>
+                        <li>2 Instructores de Instrumentos Avanzados (12 horas semanales cada uno)</li>
+                        <li>1 Coordinador de Proyectos Interdisciplinarios (10 horas semanales)</li>
+                        <li>1 Profesor de Música Avanzada (6 horas semanales)</li>
+                    </ul>
+                </li>
+                <li><strong>Recursos Materiales:</strong>
+                    <ul>
+                        <li>Instrumentos avanzados (violines, violonchelos, trompetas, trombones, percusión profesional)
+                        </li>
+                        <li>Partituras y arreglos musicales para orquesta y banda</li>
+                        <li>Equipo de sonido profesional (micrófonos, mezcladora, monitores)</li>
+                        <li>Material didáctico para módulos avanzados</li>
+                        <li>Recursos tecnológicos para proyectos interdisciplinarios (software de edición musical,
+                            proyectores, etc.)</li>
+                    </ul>
+                </li>
+                <li><strong>Espacios Físicos:</strong>
+                    <ul>
+                        <li>Sala de ensayo para orquesta y banda (con aislamiento acústico)</li>
+                        <li>Aula equipada para módulos avanzados (pizarra, proyector, equipo de audio)</li>
+                        <li>Espacio para presentaciones públicas (auditorio con capacidad para 200 personas)</li>
+                        <li>Sala de reuniones para coordinación de proyectos interdisciplinarios</li>
+                    </ul>
+                </li>
+                <li><strong>Presupuesto Estimado:</strong>
+                    <ul>
+                        <li>Honorarios docentes: $4,000 USD/mes</li>
+                        <li>Adquisición de instrumentos avanzados: $10,000 USD</li>
+                        <li>Equipo de sonido profesional: $3,000 USD</li>
+                        <li>Material didáctico y tecnológico: $2,000 USD</li>
+                        <li>Mantenimiento de espacios y equipo: $500 USD/mes</li>
+                    </ul>
+                </li>
+                <li><strong>Logística:</strong>
+                    <ul>
+                        <li>Coordinación de horarios ampliados con el calendario escolar</li>
+                        <li>Organización de ensayos y presentaciones de orquesta y banda</li>
+                        <li>Colaboración con otras áreas académicas para proyectos interdisciplinarios</li>
+                        <li>Evaluación final del progreso de los estudiantes</li>
+                        <li>Comunicación constante con padres de familia y comunidad educativa</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Función para abrir el modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        // Función para cerrar el modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Cerrar el modal si se hace clic fuera del contenido
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
